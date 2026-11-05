@@ -1,0 +1,89 @@
+! STAGE 1: settle an RSP RR Lyrae model WITHOUT Colors.
+! Termination is controlled by src/run_star_extras.f90:
+!   x_integer_ctrl(1) = 1       -> settle mode
+!   x_integer_ctrl(2) = 80      -> minimum completed periods before checking stability
+!   x_integer_ctrl(3) = 8       -> consecutive stable periods required
+!   x_integer_ctrl(4) = 600     -> hard maximum completed periods
+!   x_ctrl(2)        = 1d-3     -> stability threshold on abs(rsp_GREKM)
+!
+! The old expected-period check has deliberately been removed.
+
+&star_job
+      show_log_description_at_start = .false.
+
+      create_RSP_model = .true.
+
+      save_model_when_terminate = .true.
+      save_model_filename = 'settled.mod'
+
+      history_columns_file = 'history_columns_settle.list'
+      profile_columns_file = 'profile_columns.list'
+
+      initial_zfracs = 6
+
+      set_initial_age = .true.
+      initial_age = 0
+
+      set_initial_model_number = .true.
+      initial_model_number = 0
+
+      set_initial_cumulative_energy_error = .true.
+      new_cumulative_energy_error = 0d0
+/ ! end of star_job namelist
+
+&eos
+/ ! end of eos namelist
+
+&kap
+      Zbase = 0.0004d0
+      kap_file_prefix = 'a09'
+      kap_lowT_prefix = 'lowT_fa05_a09p'
+      kap_CO_prefix = 'a09_co'
+/ ! end of kap namelist
+
+&controls
+      max_model_number = 4000000
+      use_gold2_tolerances = .true.
+
+      ! RR Lyrae-like RSP model.  Do not tune to an observed period here;
+      ! this is a stable Colors demonstration model, not a period-fit model.
+      RSP_mass = 0.65d0
+      RSP_Teff = 6600d0
+      RSP_L = 50d0
+      RSP_X = 0.75d0
+      RSP_Z = 0.0004d0
+
+      ! extras mode and stability controls
+      x_integer_ctrl(1) = 1          ! 1 = settle until stable
+      x_integer_ctrl(2) = 80         ! minimum completed periods before stability check
+      x_integer_ctrl(3) = 8          ! consecutive stable completed periods required
+      x_integer_ctrl(4) = 600        ! hard maximum completed periods
+      x_ctrl(2) = 1d-3               ! abs(rsp_GREKM) threshold for settled pulsation
+
+      ! Moderate cadence while settling.  Colors are off in this stage.
+      RSP_target_steps_per_cycle = 150
+      RSP_max_dt = 600d0
+      RSP_kick_vsurf_km_per_sec = 20.0d0
+
+      history_interval = 10
+      photo_interval = 5000
+      profile_interval = 5000
+      terminal_interval = 500
+
+      terminal_show_age_units = 'days'
+      terminal_show_timestep_units = 'secs'
+      terminal_show_log_dt = .false.
+      terminal_show_log_age = .false.
+
+      trace_history_value_name(1) = 'rel_E_err'
+      trace_history_value_name(2) = 'log_rel_run_E_err'
+/ ! end of controls namelist
+
+&colors
+      use_colors = .false.
+      make_csv = .false.
+      sed_per_model = .false.
+/ ! end of colors namelist
+
+&pgstar
+/ ! end of pgstar namelist

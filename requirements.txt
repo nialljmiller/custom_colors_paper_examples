@@ -1,0 +1,12 @@
+numpy
+scipy
+pandas
+matplotlib
+astropy
+h5py
+mesa_reader
+sed-model
+# optional: MSG comparison (App. H) and data download scripts
+# pymsg
+# astroquery
+# lightkurve

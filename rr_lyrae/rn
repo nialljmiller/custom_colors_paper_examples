@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+source "${MESA_DIR}/star/test_suite/test_suite_helpers"
+
+date "+DATE: %Y-%m-%d%nTIME: %H:%M:%S"
+
+echo "=== Stage 1: settle RSP model without Colors ==="
+do_one inlist_rsp_RR_Lyrae settled.mod LOGS_settle
+
+if [[ ! -s settled.mod ]]; then
+   echo "ERROR: Stage 1 did not produce settled.mod" >&2
+   exit 1
+fi
+
+echo "=== Stage 2: restart settled.mod with Colors + per-model SEDs ==="
+do_one inlist_rsp_RR_Lyrae_colors colors_final.mod LOGS_colors
+
+if [[ ! -s colors_final.mod ]]; then
+   echo "ERROR: Stage 2 did not produce colors_final.mod" >&2
+   exit 1
+fi
+
+date "+DATE: %Y-%m-%d%nTIME:%H:%M:%S"
+echo "finished two-stage RSP Colors run"

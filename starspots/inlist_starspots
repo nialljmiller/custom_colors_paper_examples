@@ -1,0 +1,79 @@
+&star_job
+
+   history_columns_file = 'history_master.list'
+   profile_columns_file = 'profile_master.list'
+
+   pre_ms_relax_num_steps = 1000
+   create_pre_main_sequence_model = .true.
+
+   change_net = .true.
+   new_net_name = 'pp_extras.net'
+
+   pgstar_flag = .false.
+
+   ! save a model at the end of the run
+   save_model_when_terminate = .true.
+   save_model_filename = 'ms_model.mod'
+
+   warn_run_star_extras = .false.
+
+/ ! end of star_job namelist
+
+
+&eos
+/
+
+&kap
+   Zbase = 0.014
+   kap_file_prefix = 'a09'
+   kap_lowT_prefix = 'lowT_fa05_a09p'
+   kap_CO_prefix = 'a09_co'
+/
+
+&controls
+   initial_mass = 0.3
+   
+   ! Starspots
+   do_starspots = .true.
+   fspot = 0.2d0
+   xspot = 0.85d0
+   
+   ! MLT prescription - CRITICAL FOR FIGURE 15
+   mixing_length_alpha = 1.95
+   MLT_option = 'Henyey'
+   
+   ! Stop at end of main sequence
+   xa_central_lower_limit_species(1) = 'h1'
+   xa_central_lower_limit(1) = 0.0000000001
+   
+   ! Atmosphere
+   atm_option = 'table'
+   atm_table = 'photosphere'
+
+   ! Output
+   log_directory = 'LOGS_M0.3_f0.2'
+   history_interval = 1
+   terminal_interval = 100
+   photo_interval = 500
+   write_profiles_flag = .false.
+
+   ! Solver
+   use_gold2_tolerances = .true.
+   varcontrol_target = 1e-4
+
+/ ! end of controls namelist
+
+
+&pgstar
+/
+
+&colors
+   use_colors = .true.
+   stellar_atm = '/home/njm/SED_Tools/data/stellar_models/bt-settl/'
+   instrument = '/home/njm/SED_Tools/data/filters/LSST/LSST'
+   distance = 3.0857d19
+   mag_system = 'AB'
+   colors_results_directory = 'LOGS_M0.3_f0.2/SED'
+   make_csv = .true.
+   sed_per_model = .true.
+/ ! end of colors namelist

@@ -1,0 +1,36 @@
+{
+  "accepted_history_models": 3534,
+  "first_model": 7948,
+  "starting_age_yr": 8999250826.219368,
+  "starting_model": 7947,
+  "final_model": 11481,
+  "final_age_yr": 12741453355.595316,
+  "final_Teff_K": 3599.8061309179698,
+  "final_log_g": 0.997515244564719,
+  "alpha_MLT": 1.8982421875,
+  "termination": [
+    "termination code: Teff_lower_limit"
+  ],
+  "MSG_models": 3534,
+  "outside_CAP18_models": [],
+  "statistics": {
+    "delta_B": {
+      "median": -0.022595152956771614,
+      "rms": 0.03487093664314364,
+      "min": -0.05578498792088071,
+      "max": 0.07236585126273609
+    },
+    "delta_V": {
+      "median": 0.1564179466901896,
+      "rms": 0.1395014210241566,
+      "min": 0.00011881175449213188,
+      "max": 0.2946919763062568
+    },
+    "delta_B_minus_V": {
+      "median": -0.16593754883884726,
+      "rms": 0.1482727735492372,
+      "min": -0.2223261250435209,
+      "max": -0.003446105612038508
+    }
+  }
+}

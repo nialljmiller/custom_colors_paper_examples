@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+photo_directory=photos
+
+most_recent_photo() {
+    ls -tp "$photo_directory" | grep -v / | head -1
+}
+
+if [[ $# -eq 0 ]]; then
+    photo=$(most_recent_photo)
+else
+    photo=$1
+fi
+
+if [[ -z "${photo:-}" || ! -f "$photo_directory/$photo" ]]; then
+    echo "specified photo ($photo_directory/$photo) does not exist"
+    exit 1
+fi
+
+echo "restart from $photo_directory/$photo"
+cp "$photo_directory/$photo" restart_photo
+
+date "+DATE: %Y-%m-%d%nTIME: %H:%M:%S"
+make run
+date "+DATE: %Y-%m-%d%nTIME: %H:%M:%S"

@@ -1,0 +1,54 @@
+! history_columns.list -- for RSP + Colors demonstration
+! Configured to capture synthetic photometry at every RSP timestep
+!
+! For MESA Colors paper: Radial Stellar Pulsations section
+
+! Include the standard defaults, then add our specific columns
+include ''
+
+!----------------------------------------------------------------------------------------------
+! TIME AND PHASE INFORMATION
+!----------------------------------------------------------------------------------------------
+
+      model_number
+      star_age
+      star_age_day
+      log_dt_sec
+
+!----------------------------------------------------------------------------------------------
+! STELLAR PARAMETERS
+!----------------------------------------------------------------------------------------------
+
+      log_L
+      log_Teff
+      log_g
+      photosphere_r
+      effective_T
+      star_mass
+      phase_of_evolution
+
+!----------------------------------------------------------------------------------------------
+! RSP-SPECIFIC COLUMNS - Pulsation diagnostics
+!----------------------------------------------------------------------------------------------
+
+      rsp_phase           ! Running pulsation phase [0,1]
+      rsp_period_in_days  ! Period between consecutive R_max
+      rsp_num_periods     ! Count of completed pulsation cycles
+      rsp_DeltaMag        ! Magnitude difference min to max light
+      rsp_DeltaR          ! Radius difference R_max - R_min (Rsun)
+      rsp_GREKM           ! Fractional KE growth per period
+
+
+!----------------------------------------------------------------------------------------------
+! ENERGY CONSERVATION (for diagnostics)
+!----------------------------------------------------------------------------------------------
+
+      rel_E_err
+      log_rel_run_E_err
+
+!----------------------------------------------------------------------------------------------
+! VELOCITIES (useful for RSP)
+!----------------------------------------------------------------------------------------------
+
+      max_abs_v_div_cs
+      v_surf_km_s

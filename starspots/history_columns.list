@@ -1,0 +1,16 @@
+! history_columns.list for starspots CMD test suite
+! Columns needed to construct color-magnitude diagram
+
+! Standard stellar parameters
+star_age
+star_mass
+log_L
+log_Teff
+log_R
+log_g
+
+! Evolutionary state indicators
+center_h1
+center_he4
+surface_h1
+

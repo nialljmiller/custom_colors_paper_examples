@@ -1,0 +1,21 @@
+# Data and MESA run products live in the Zenodo archive, not in git
+LOGS*/
+SED/
+SEDs/
+photos/
+build/
+make/
+input_data/
+*.data
+*.mod
+*.smod
+*.o
+star
+*.bin
+*.h5
+*.parquet
+*.fits
+*.mp4
+*.gif
+.mesa_temp_cache/
+__pycache__/

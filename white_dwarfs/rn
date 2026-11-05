@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+source "${MESA_DIR}/star/test_suite/test_suite_helpers"
+
+date "+DATE: %Y-%m-%d%nTIME: %H:%M:%S"
+
+if [ -f wd_start.mod ]; then
+   echo "Found wd_start.mod; running WD cooling stage"
+   do_one inlist_cool_wd wd_cooled.mod LOGS_wd_cool
+else
+   echo "No wd_start.mod found; running progenitor stage"
+   do_one inlist_to_wd wd_start.mod LOGS_progenitor
+
+   echo "Running WD cooling stage"
+   do_one inlist_cool_wd wd_cooled.mod LOGS_wd_cool
+fi
+
+date "+DATE: %Y-%m-%d%nTIME: %H:%M:%S"
+echo 'finished'

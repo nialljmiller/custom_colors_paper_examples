@@ -1,0 +1,18 @@
+! Colors automatically appends B and V at every history output.
+model_number
+star_age
+star_mass
+log_dt
+effective_T
+log_g
+radius_cm
+photosphere_logg
+photosphere_r
+log_L
+center_h1
+center_he4
+he_core_mass
+co_core_mass
+phase_of_evolution
+num_retries
+num_iters

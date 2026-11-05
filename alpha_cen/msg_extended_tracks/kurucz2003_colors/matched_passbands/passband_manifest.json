@@ -1,0 +1,30 @@
+{
+  "vega_reference": "/home/njm/MESA/mesa/data/colors_data/stellar_models/vega_flam.csv",
+  "vega_sha256": "f5d77623188ab923d63cbb67a76b6a575e04ffff5881c7eea7891a9502148478",
+  "passbands": {
+    "B": {
+      "colors_filter_input": "/home/njm/MESA/mesa/data/colors_data/filters/Generic/Johnson/B.dat",
+      "colors_filter_sha256": "f3ca3491522556bcc8d9b2ab6839b30c167acf75bb3f5326bea0ed1e9bc2bab0",
+      "response_table": "/home/njm/MESA/alpha_cen_colors/msg_extended_tracks/kurucz2003_colors/matched_passbands/Johnson_B_lambda_times_T.dat",
+      "response_table_sha256": "b8f96a30e6acfb2bb859981fd03d4bdd46227b856d3cb851ffae0d74b57a3d31",
+      "msg_passband_h5": "/home/njm/MESA/alpha_cen_colors/msg_extended_tracks/kurucz2003_colors/matched_passbands/Johnson_B_Vega_matched.h5",
+      "passband_sha256": "8cadb8e7549278a6978f836bcaac1f667a1ad62d1dc565c563ce405f8ec819e1",
+      "vega_zero_point_F_0": 6.254606840015883e-09,
+      "vega_zero_point_units": "mean F_lambda in the Colors Vega SED wavelength/flux units",
+      "wavelength_unit": "Angstrom, unchanged from the Colors passband table"
+    },
+    "V": {
+      "colors_filter_input": "/home/njm/MESA/mesa/data/colors_data/filters/Generic/Johnson/V.dat",
+      "colors_filter_sha256": "202779042cb4b0ddc43b00115314a90a59e5f41814dc906db833b57000e0bb9a",
+      "response_table": "/home/njm/MESA/alpha_cen_colors/msg_extended_tracks/kurucz2003_colors/matched_passbands/Johnson_V_lambda_times_T.dat",
+      "response_table_sha256": "34fdd0dd6865f4eca3c375ee47647ad9886c733c0357de3fe6ff5828d5bd2c14",
+      "msg_passband_h5": "/home/njm/MESA/alpha_cen_colors/msg_extended_tracks/kurucz2003_colors/matched_passbands/Johnson_V_Vega_matched.h5",
+      "passband_sha256": "eb2f17dc0f1428e5db0e36c4aefbd92dc65ece8005b447190b4ac0f02443924d",
+      "vega_zero_point_F_0": 3.532867602546534e-09,
+      "vega_zero_point_units": "mean F_lambda in the Colors Vega SED wavelength/flux units",
+      "wavelength_unit": "Angstrom, unchanged from the Colors passband table"
+    }
+  },
+  "response_definition": "S(lambda) = lambda * Colors Johnson transmission",
+  "zero_point_definition": "integral(Vega F_lambda * S d_lambda) / integral(S d_lambda), using the exact MSG cubic response interpolant and the Colors Vega reference spectrum"
+}
